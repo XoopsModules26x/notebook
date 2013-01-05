@@ -46,7 +46,7 @@ switch ($op) {
     case 'list':
     default:
         // Add Scripts
-        $xoops->theme->addScript('media/xoops/xoops.js');
+        $xoops->theme()->addScript('media/xoops/xoops.js');
         
         $admin_page->addTips(_AM_NOTEBOOK_TIPS);
         $admin_page->addItemButton(_AM_NOTEBOOK_ADD, 'notebook.php?op=new_notebook', 'add');
@@ -64,7 +64,7 @@ switch ($op) {
         $notebook_count = $notebook_Handler->getCount($criteria);
         $notebook_arr = $notebook_Handler->getall($criteria);
         // Assign Template variables
-        $xoops->tpl->assign('notebook_count', $notebook_count);
+        $xoops->tpl()->assign('notebook_count', $notebook_count);
         if ($notebook_count > 0) {
             foreach (array_keys($notebook_arr) as $i) {
 				$notebook['notebook_id'] = $notebook_arr[$i]->getVar("id");
@@ -111,7 +111,7 @@ switch ($op) {
 				}
 				
 				$notebook['attributed'] = $attributed;	
-				$xoops->tpl->append_by_ref('notebook', $notebook);
+				$xoops->tpl()->append_by_ref('notebook', $notebook);
                 unset($notebook);
 				unset($user);
             }
@@ -119,7 +119,7 @@ switch ($op) {
         // Display Page Navigation
         if ($notebook_count > $nb_notebook) {
             $nav = new XoopsPageNav($notebook_count, $nb_notebook, $start, 'start', 'op=list');
-            $xoops->tpl->assign('nav_menu', $nav->renderNav(2));
+            $xoops->tpl()->assign('nav_menu', $nav->renderNav(2));
         }
         break;
 
@@ -131,9 +131,8 @@ switch ($op) {
         // Create form
         $obj = $notebook_Handler->create();
         $form = $xoops->getModuleForm($obj, 'notebook');
-        $form->render();
-        $xoops->tpl->assign('form', true);
-        break;
+        $xoops->tpl()->assign('form', $form->render());
+    break;
 
     // Edit notebook
     case "edit_notebook":
@@ -144,13 +143,12 @@ switch ($op) {
         // Create form
         $obj = $notebook_Handler->get($system->cleanVars($_REQUEST, 'notebook_id', 0, 'int'));
         $form = $xoops->getModuleForm($obj, 'notebook');
-        $form->render();
-        $xoops->tpl->assign('form', true);
-        break;
+        $xoops->tpl()->assign('form', $form->render());
+    break;
 
     // Save notebook
     case "save_notebook":
-        if (!$xoops->security->check()) {
+        if (!$xoops->security()->check()) {
             $xoops->redirect('notebook.php', 3, implode('<br />', $xoops->security->getErrors()));
         }
 
@@ -180,7 +178,7 @@ switch ($op) {
         $xoops->error($obj->getHtmlErrors());
         $form = $xoops->getModuleForm($obj, 'notebook');
         $form->render();
-        $xoops->tpl->assign('form', true);
+        $xoops->tpl()->assign('form', true);
         break;
 
     //Delete a notebook
@@ -191,7 +189,7 @@ switch ($op) {
         $notebook_id = $system->cleanVars($_REQUEST, 'notebook_id', 0, 'int');
         $obj = $notebook_Handler->get($notebook_id);
         if (isset($_POST["ok"]) && $_POST["ok"] == 1) {
-            if (!$xoops->security->check()) {
+            if (!$xoops->security()->check()) {
                 $xoops->redirect("notebook.php", 3, implode(",", $xoops->security->getErrors()));
             }
             if ($notebook_Handler->delete($obj)) {
@@ -206,7 +204,7 @@ switch ($op) {
             }
         } else {
             // Define Stylesheet
-            $xoops->theme->addStylesheet('modules/system/css/admin.css');
+            $xoops->theme()->addStylesheet('modules/system/css/admin.css');
             $notebook_img = ($obj->getVar("smile_url")) ? $obj->getVar("smile_url") : 'blank.gif';
             $xoops->confirm(array(
                                  "ok" => 1, "notebook_id" => $_REQUEST["notebook_id"], "op" => "notebook_delete"

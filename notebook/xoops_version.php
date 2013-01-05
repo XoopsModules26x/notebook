@@ -26,7 +26,7 @@
 $modversion = array();
 $modversion['name']           = _MI_NOTEBOOK_NAME;
 $modversion['description']    = _MI_NOTEBOOK_DESC;
-$modversion['version']        = 0.1;
+$modversion['version']        = 0.2;
 $modversion['author']         = 'Cointin Maxime';
 $modversion['nickname']       = 'Kraven30';
 $modversion['credits']        = 'The XOOPS Project';

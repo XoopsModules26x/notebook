@@ -27,9 +27,9 @@ class NotebookNotebookForm extends XoopsThemeForm
     /**
      * @param XoopsBanner|XoopsObject $obj
      */
-    public function __construct(Notebook &$obj)
+    public function __construct(NotebookNotebook &$obj)
     {
-        $xoops = Xoops::getInstance();
+       // $xoops = Xoops::getInstance();
 
         $title = $obj->isNew() ? sprintf( _AM_NOTEBOOK_ADD ) : sprintf( _AM_NOTEBOOK_EDIT );
 
