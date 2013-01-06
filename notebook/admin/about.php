@@ -22,6 +22,6 @@
 include dirname(__FILE__) . '/header.php';
 $xoops->header();
 $aboutAdmin = new XoopsModuleAdmin();
-$aboutAdmin->renderNavigation('about.php');
-$aboutAdmin->renderabout('6KJ7RW5DR3VTJ', true);
+$aboutAdmin->displayNavigation('about.php');
+$aboutAdmin->displayabout('6KJ7RW5DR3VTJ', true);
 $xoops->footer();

@@ -22,7 +22,7 @@
 include dirname(__FILE__) . '/header.php';
 // Get notebook handler
 $notebook_Handler = $xoops->getModuleHandler('notebook');
-
+$xoops = Xoops::getInstance();
 $xoops->header();
 // notebook to do
 $criteria = new CriteriaCompo();
@@ -38,13 +38,13 @@ $criteria->add(new Criteria('status', 2));
 $notebook_completed = $notebook_Handler->getCount($criteria);
 
 $admin_page = new XoopsModuleAdmin();
-$admin_page->renderNavigation('index.php');
+$admin_page->displayNavigation('index.php');
 
 $admin_page->addInfoBox(_MI_NOTEBOOK_NOTEBOOK);
 $admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_TODO, '<span class="red">' . $notebook_todo . '</span>'));
 $admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_INPROGRESS, '<span style="color:#FF8C00">' . $notebook_inprogress . '</span>'));
 $admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_COMPLETED, '<span class="green">' . $notebook_completed . '</span>'));
 
-$admin_page->renderIndex();
+$admin_page->displayIndex();
 
 $xoops->footer();

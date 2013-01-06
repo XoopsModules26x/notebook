@@ -47,7 +47,7 @@ switch ($op) {
     default:
         // Add Scripts
         $xoops->theme()->addScript('media/xoops/xoops.js');
-        
+
         $admin_page->addTips(_AM_NOTEBOOK_TIPS);
         $admin_page->addItemButton(_AM_NOTEBOOK_ADD, 'notebook.php?op=new_notebook', 'add');
         $admin_page->renderTips();
@@ -56,7 +56,7 @@ switch ($op) {
         $start = $system->cleanVars($_REQUEST, 'start', 0, 'int');
         // Criteria
         $criteria = new CriteriaCompo();
-        $criteria->setSort("id");
+        $criteria->setSort("priority");
         $criteria->setOrder("DESC");
         $criteria->setStart($start);
         $criteria->setLimit($nb_notebook);
@@ -73,7 +73,7 @@ switch ($op) {
 				$notebook['date_created'] = XoopsLocal::formatTimestamp($notebook_arr[$i]->getVar("date_created"), "m");
 				$user = $member_handler->getUser($notebook_arr[$i]->getVar("uid_creator"));
 				$notebook['uid_creator'] = $user->getVar("uname");
-				
+
 				if($notebook_arr[$i]->getVar("status") == 0) {
 					$status_color = "#FF0000";//#FFE4E1
 					$status_name = _AM_NOTEBOOK_FORM_STATUS_MAKE;
@@ -91,9 +91,9 @@ switch ($op) {
 				$status =  "<span align='center' style='border: 1px solid rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0%; margin: 0 auto; text-align:center; display: block; height: 8px; width: 100%; float: left; overflow: hidden;'>
 								<span style='background:".$status_color." none repeat scroll 0%; text-align:left; display: block; height: 8px; width: ".$status_pourcentage."%; float: left; overflow: hidden;'></span>
 							</span><br />".$status_name;
-				
+
 				$notebook['status'] = $status;
-				
+
 				if($notebook_arr[$i]->getVar("priority") == 0) {
 					$priority = '<img src="'.XOOPS_URL.'/modules/notebook/images/flag_yellow.png" title="'._AM_NOTEBOOK_PRIORITY_LOW.'" alt="'._AM_NOTEBOOK_PRIORITY_LOW.'" />';
 				} else if($notebook_arr[$i]->getVar("priority") == 1){
@@ -101,7 +101,7 @@ switch ($op) {
 				} else if($notebook_arr[$i]->getVar("priority") == 2){
 					$priority = '<img src="'.XOOPS_URL.'/modules/notebook/images/flag_red.png" title="'._AM_NOTEBOOK_PRIORITY_HIGH.'" alt="'._AM_NOTEBOOK_PRIORITY_HIGH.'" />';
 				}
-				$notebook['priority'] = $priority;				
+				$notebook['priority'] = $priority;
 				$criteria1 = new CriteriaCompo();
 				$criteria1->add(new Criteria('uid', '('.$notebook_arr[$i]->getVar("uid_attributed").')', 'IN'));
 				//$attributed_arr = $member_handler->getUserList($criteria1);
@@ -109,8 +109,8 @@ switch ($op) {
 				foreach ($member_handler->getUserList($criteria1) as $value) {
 					$attributed .= '<img src="'.XOOPS_URL.'/modules/notebook/images/arrow.png" />'.$value.'<br />';
 				}
-				
-				$notebook['attributed'] = $attributed;	
+
+				$notebook['attributed'] = $attributed;
 				$xoops->tpl()->append_by_ref('notebook', $notebook);
                 unset($notebook);
 				unset($user);
@@ -161,17 +161,21 @@ switch ($op) {
         // erreur
         $obj->setVar("title", $_POST["title"]);
         $obj->setVar("desc", $_POST["desc"]);
-        $obj->setVar("status", $_POST["status"]);
+        if(isset($_POST["status"])) {
+            $obj->setVar("status", $_POST["status"]);
+        }
 		$obj->setVar("priority", $_POST["priority"]);
-		$obj->setVar("date_created", $_POST["date_created"]);
-		
+        if (isset($_POST["date_created"])) {
+            $obj->setVar("date_created", $_POST["date_created"]);
+        }
+
 		if(isset($_POST["uid_attributed"])) {
 			$uid_attributed = implode(',', $_POST["uid_attributed"]);
 			$obj->setVar("uid_attributed", $uid_attributed);
 		} else {
 			$obj->setVar("uid_attributed", $xoopsUser->getVar('uid'));
 		}
-		
+
         if ($notebook_Handler->insert($obj)) {
 			$xoops->redirect("notebook.php", 2, _AM_NOTEBOOK_SAVE);
         }

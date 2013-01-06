@@ -34,8 +34,8 @@ class NotebookNotebookForm extends XoopsThemeForm
         $title = $obj->isNew() ? sprintf( _AM_NOTEBOOK_ADD ) : sprintf( _AM_NOTEBOOK_EDIT );
 
         parent::__construct($title, 'form', 'notebook.php', 'post', true);
-		
-		
+
+
         $this->addElement(new XoopsFormText( _AM_NOTEBOOK_FORM_TITLE, 'title', 80, 255, $obj->getVar('title') ), true );
         $this->addElement(new xoopsFormTextArea( _AM_NOTEBOOK_FORM_DESC, 'desc', $obj->getVar('desc'), 8, 50), false );
 		if (!$obj->isNew()) {
@@ -44,16 +44,18 @@ class NotebookNotebookForm extends XoopsThemeForm
 			$options = array(0 =>_AM_NOTEBOOK_FORM_STATUS_MAKE, 1 => _AM_NOTEBOOK_FORM_STATUS_PENDING, 2 => _AM_NOTEBOOK_FORM_STATUS_FINISHED );
 			$uname->addOptionArray($options);
 			$this->addElement($uname, true);
-		}
-		
+		} else {
+            $this->addElement(new XoopsFormHidden('date_created', time() ) );
+        }
+
 		$priority = new XoopsFormSelect(_AM_NOTEBOOK_PRIORITY, "priority", $obj->getVar('priority'));
 		$options = array(2 =>_AM_NOTEBOOK_PRIORITY_HIGH, 1 => _AM_NOTEBOOK_PRIORITY_NORMAL, 0 => _AM_NOTEBOOK_PRIORITY_LOW );
 		$priority->addOptionArray($options);
 		$this->addElement($priority, true);
-		
+
 		//explode(',',$obj->getVar('uid_attributed'))
 		$this->addElement(new XoopsFormSelectUser(_AM_NOTEBOOK_UID_ATTRIBUTED, 'uid_attributed', false, null, 5, true));
-		
+
 		if (!$obj->isNew()) {
             $this->addElement(new XoopsFormHidden( 'notebook_id', $obj->getVar('id') ) );
         }
