@@ -70,7 +70,7 @@ switch ($op) {
 				$notebook['notebook_id'] = $notebook_arr[$i]->getVar("id");
                 $notebook['title'] = $notebook_arr[$i]->getVar("title");
                 $notebook['desc'] = $notebook_arr[$i]->getVar("desc");
-				$notebook['date_created'] = XoopsLocal::formatTimestamp($notebook_arr[$i]->getVar("date_created"), "m");
+				$notebook['date_created'] = XoopsLocale::formatTimestamp($notebook_arr[$i]->getVar("date_created"), "m");
 				$user = $member_handler->getUser($notebook_arr[$i]->getVar("uid_creator"));
 				$notebook['uid_creator'] = $user->getVar("uname");
 
