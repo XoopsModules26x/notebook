@@ -1,11 +1,11 @@
 #
-# Table structure for table `mod_notebook`
+# Table structure for table `notebook`
 #
 
-CREATE TABLE `mod_notebook` (
+CREATE TABLE `notebook` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
-  `desc` text NOT NULL,
+  `description` text NOT NULL,
   `uid_creator` int(11) NOT NULL DEFAULT '0',
   `uid_attributed` varchar(255) NOT NULL,
   `date_created` int(10) NOT NULL DEFAULT '0',

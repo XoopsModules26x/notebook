@@ -13,13 +13,13 @@
  * notebook module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  * @version         $Id: header.php 8460 2011-12-11 20:08:06Z kraven30 $
  */
-require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/include/cp_header.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 
 $xoops = Xoops::getInstance();
 XoopsLoad::load('system', 'system');

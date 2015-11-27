@@ -13,18 +13,18 @@
  * notebook module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  * @version         $Id: admin.php 9443 2012-05-06 20:39:08Z kraven30 $
  */
 // Info module
-define("_MI_NOTEBOOK_NAME", "Notebook");
-define("_MI_NOTEBOOK_DESC", "Module for managing notebook");
+define('_MI_NOTEBOOK_NAME', 'To-Do List');
+define('_MI_NOTEBOOK_DESC', 'Module for managing To-Do List');
 // Menu
-define("_MI_NOTEBOOK_INDEX", "Home");
-define("_MI_NOTEBOOK_NOTEBOOK", "Notebook manager");
-define("_MI_NOTEBOOK_ABOUT", "About");
+define('_MI_NOTEBOOK_INDEX', 'Home');
+define('_MI_NOTEBOOK_NOTEBOOK', 'To-Do manager');
+define('_MI_NOTEBOOK_ABOUT', 'About');
 // Preferences
-define("_MI_NOTEBOOK_PREFERENCE_PAGER", "Number of notebook to display per page");
+define('_MI_NOTEBOOK_PREFERENCE_PAGER', 'Number of To-Do items to display on page');

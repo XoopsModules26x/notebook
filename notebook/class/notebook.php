@@ -9,11 +9,15 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 
+use Xoops\Core\Database\Connection;
+use Xoops\Core\Kernel\XoopsObject;
+use Xoops\Core\Kernel\XoopsPersistableObjectHandler;
+
 /**
  * notebook module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
@@ -22,6 +26,9 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
+/**
+ * Class NotebookNotebook
+ */
 class NotebookNotebook extends XoopsObject
 {
     /**
@@ -31,23 +38,26 @@ class NotebookNotebook extends XoopsObject
     {
         $this->initVar('id', XOBJ_DTYPE_INT, null, false, 5);
         $this->initVar('title', XOBJ_DTYPE_TXTBOX, null, false);
-        $this->initVar('desc', XOBJ_DTYPE_TXTBOX, null, false);
-		$this->initVar('uid_creator', XOBJ_DTYPE_INT, null, false, 11);
-		$this->initVar('uid_attributed', XOBJ_DTYPE_TXTBOX, null, false);
-		$this->initVar('date_created', XOBJ_DTYPE_INT, null, false, 10);
-		$this->initVar('date_finished', XOBJ_DTYPE_INT, null, false, 10);
-		$this->initVar('status', XOBJ_DTYPE_INT, null, false, 1);
-		$this->initVar('priority', XOBJ_DTYPE_INT, null, false, 1);
-	}
+        $this->initVar('description', XOBJ_DTYPE_TXTBOX, null, false);
+        $this->initVar('uid_creator', XOBJ_DTYPE_INT, null, false, 11);
+        $this->initVar('uid_attributed', XOBJ_DTYPE_TXTBOX, null, false);
+        $this->initVar('date_created', XOBJ_DTYPE_INT, null, false, 10);
+        $this->initVar('date_finished', XOBJ_DTYPE_INT, null, false, 10);
+        $this->initVar('status', XOBJ_DTYPE_INT, null, false, 1);
+        $this->initVar('priority', XOBJ_DTYPE_INT, null, false, 1);
+    }
 }
 
+/**
+ * Class NotebookNotebookHandler
+ */
 class NotebookNotebookHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * @param null|XoopsDatabase $db
+     * @param null|Connection|XoopsDatabase $db
      */
-    public function __construct(XoopsDatabase $db = null)
+    public function __construct(Connection $db = null)
     {
-        parent::__construct($db, 'mod_notebook', 'notebooknotebook', 'id', 'title');
+        parent::__construct($db, 'notebook', 'notebooknotebook', 'id', 'title');
     }
 }

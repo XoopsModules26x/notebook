@@ -13,16 +13,16 @@
  * notebook module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  * @version         $Id: index.php 8487 2011-12-14 18:13:51Z kraven30 $
  */
-include dirname(__FILE__) . '/header.php';
+include __DIR__ . '/header.php';
 // Get notebook handler
 $notebook_Handler = $xoops->getModuleHandler('notebook');
-$xoops = Xoops::getInstance();
+$xoops            = Xoops::getInstance();
 $xoops->header();
 // notebook to do
 $criteria = new CriteriaCompo();
@@ -37,12 +37,13 @@ $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('status', 2));
 $notebook_completed = $notebook_Handler->getCount($criteria);
 
-$admin_page = new XoopsModuleAdmin();
+//$admin_page = new XoopsModuleAdmin();
+$admin_page = new \Xoops\Module\Admin();
 $admin_page->displayNavigation('index.php');
 
 $admin_page->addInfoBox(_MI_NOTEBOOK_NOTEBOOK);
 $admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_TODO, '<span class="red">' . $notebook_todo . '</span>'));
-$admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_INPROGRESS, '<span style="color:#FF8C00">' . $notebook_inprogress . '</span>'));
+$admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_INPROGRESS, '<span style="color:#FF8C00;">' . $notebook_inprogress . '</span>'));
 $admin_page->addInfoBoxLine(sprintf(_AM_NOTEBOOK_NB_COMPLETED, '<span class="green">' . $notebook_completed . '</span>'));
 
 $admin_page->displayIndex();
