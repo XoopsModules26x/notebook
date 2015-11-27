@@ -13,15 +13,15 @@
  * notebook module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  * @version         $Id: about.php 8470 2011-12-12 21:50:07Z kraven30 $
  */
-include dirname(__FILE__) . '/header.php';
+include __DIR__ . '/header.php';
 $xoops->header();
-$aboutAdmin = new XoopsModuleAdmin();
+$aboutAdmin = new \Xoops\Module\Admin();
 $aboutAdmin->displayNavigation('about.php');
-$aboutAdmin->displayabout('6KJ7RW5DR3VTJ', true);
+$aboutAdmin->displayAbout(true);
 $xoops->footer();
