@@ -73,7 +73,7 @@ switch ($op) {
             foreach (array_keys($notebook_arr) as $i) {
                 $notebook['notebook_id']  = $notebook_arr[$i]->getVar('id');
                 $notebook['title']        = $notebook_arr[$i]->getVar('title');
-                $notebook['description']         = $notebook_arr[$i]->getVar('description');
+                $notebook['description']  = $notebook_arr[$i]->getVar('description');
                 $notebook['date_created'] = XoopsLocale::formatTimestamp($notebook_arr[$i]->getVar('date_created'), 'm');
                 $user                     = $member_handler->getUser($notebook_arr[$i]->getVar('uid_creator'));
                 $notebook['uid_creator']  = $user->getVar('uname');
@@ -97,7 +97,7 @@ switch ($op) {
                             </span><br />" . $status_name;
 
                 $notebook['status'] = $status;
-                $priority = '';
+                $priority           = '';
 
                 if ($notebook_arr[$i]->getVar('priority') == 0) {
                     $priority = '<img src="' . XOOPS_URL . '/modules/notebook/assets/images/flag_yellow.png" title="' . _AM_NOTEBOOK_PRIORITY_LOW . '" alt="' . _AM_NOTEBOOK_PRIORITY_LOW . '" />';
@@ -157,24 +157,24 @@ switch ($op) {
         }
 
         if (isset($_POST['notebook_id'])) {
-            $obj = $notebook_Handler->get(Request::getInt('notebook_id',0,'POST'));
+            $obj = $notebook_Handler->get(Request::getInt('notebook_id', 0, 'POST'));
         } else {
             $obj = $notebook_Handler->create();
             $obj->setVar('uid_creator', $xoopsUser->getVar('uid'));
         }
         // erreur
-        $obj->setVar('title', Request::getString('title','','POST'));
-        $obj->setVar('description', Request::getString('description','','POST'));
+        $obj->setVar('title', Request::getString('title', '', 'POST'));
+        $obj->setVar('description', Request::getString('description', '', 'POST'));
         if (isset($_POST['status'])) {
-            $obj->setVar('status', Request::getInt('status',0,'POST'));
+            $obj->setVar('status', Request::getInt('status', 0, 'POST'));
         }
-        $obj->setVar('priority', Request::getInt('priority',0,'POST'));
+        $obj->setVar('priority', Request::getInt('priority', 0, 'POST'));
         if (isset($_POST['date_created'])) {
-            $obj->setVar('date_created', Request::getInt('date_created',0,'POST'));
+            $obj->setVar('date_created', Request::getInt('date_created', 0, 'POST'));
         }
 
         if (isset($_POST['uid_attributed'])) {
-            $uid_attributed = implode(',', Request::getArray('uid_attributed',array(),'POST'));
+            $uid_attributed = implode(',', Request::getArray('uid_attributed', array(), 'POST'));
             $obj->setVar('uid_attributed', $uid_attributed);
         } else {
             $obj->setVar('uid_attributed', $xoopsUser->getVar('uid'));
@@ -183,7 +183,6 @@ switch ($op) {
         if ($notebook_Handler->insert($obj)) {
             $xoops->redirect('notebook.php', 2, _AM_NOTEBOOK_SAVE);
         }
-        //        $xoops->error($obj->getHtmlErrors());
         echo $xoops->alert('error', $obj->getHtmlErrors());
         $form = $xoops->getModuleForm($obj, 'notebook');
         $form->render();
@@ -197,7 +196,7 @@ switch ($op) {
         $admin_page->renderButton();
         $notebook_id = $system->cleanVars($_REQUEST, 'notebook_id', 0, 'int');
         $obj         = $notebook_Handler->get($notebook_id);
-        if (isset($_POST['ok']) && 1 == Request::getInt('ok',0,'POST')) {
+        if (isset($_POST['ok']) && 1 == Request::getInt('ok', 0, 'POST')) {
             if (!$xoops->security()->check()) {
                 $xoops->redirect('notebook.php', 3, implode(',', $xoops->security()->getErrors()));
             }
@@ -209,7 +208,6 @@ switch ($op) {
                 }
                 $xoops->redirect('notebook.php', 2, _AM_NOTEBOOK_DELETED);
             } else {
-//                $xoops->error($obj->getHtmlErrors());
                 echo $xoops->alert('error', $obj->getHtmlErrors());
             }
         } else {

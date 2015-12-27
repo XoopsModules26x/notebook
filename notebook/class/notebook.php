@@ -24,7 +24,6 @@ use Xoops\Core\Kernel\XoopsPersistableObjectHandler;
  * @version         $Id: notebook.php 9676 2012-06-19 21:05:06Z Kraven30 $
  */
 
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
 /**
  * Class NotebookNotebook

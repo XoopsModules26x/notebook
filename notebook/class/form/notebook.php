@@ -38,7 +38,6 @@ class NotebookNotebookForm extends Xoops\Form\ThemeForm
         $this->addElement(new XoopsFormText(_AM_NOTEBOOK_FORM_TITLE, 'title', 80, 255, $obj->getVar('title')), true);
         $this->addElement(new xoopsFormTextArea(_AM_NOTEBOOK_FORM_DESC, 'description', $obj->getVar('description'), 8, 50), false);
         if (!$obj->isNew()) {
-            //$this->addElement(new XoopsFormDateTime(_AM_NOTEBOOK_FORM_DATE_CREATED, 'date_created', 15, $obj->getVar('date_created')));
             $uname   = new XoopsFormSelect(_AM_NOTEBOOK_FORM_STATUS, 'status', $obj->getVar('status'));
             $options = array(0 => _AM_NOTEBOOK_FORM_STATUS_MAKE, 1 => _AM_NOTEBOOK_FORM_STATUS_PENDING, 2 => _AM_NOTEBOOK_FORM_STATUS_FINISHED);
             $uname->addOptionArray($options);
@@ -51,8 +50,6 @@ class NotebookNotebookForm extends Xoops\Form\ThemeForm
         $options  = array(2 => _AM_NOTEBOOK_PRIORITY_HIGH, 1 => _AM_NOTEBOOK_PRIORITY_NORMAL, 0 => _AM_NOTEBOOK_PRIORITY_LOW);
         $priority->addOptionArray($options);
         $this->addElement($priority, true);
-
-        //explode(',',$obj->getVar('uid_attributed'))
         $this->addElement(new XoopsFormSelectUser(_AM_NOTEBOOK_UID_ATTRIBUTED, 'uid_attributed', false, null, 5, true));
 
         if (!$obj->isNew()) {

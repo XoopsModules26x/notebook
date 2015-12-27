@@ -37,7 +37,6 @@ $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('status', 2));
 $notebook_completed = $notebook_Handler->getCount($criteria);
 
-//$admin_page = new XoopsModuleAdmin();
 $admin_page = new \Xoops\Module\Admin();
 $admin_page->displayNavigation('index.php');
 
