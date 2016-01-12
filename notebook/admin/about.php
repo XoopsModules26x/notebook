@@ -17,7 +17,6 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: about.php 8470 2011-12-12 21:50:07Z kraven30 $
  */
 include __DIR__ . '/header.php';
 $xoops->header();

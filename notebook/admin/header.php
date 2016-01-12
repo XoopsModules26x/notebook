@@ -17,7 +17,6 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: header.php 8460 2011-12-11 20:08:06Z kraven30 $
  */
 require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 

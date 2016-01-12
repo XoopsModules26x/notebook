@@ -17,7 +17,6 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: xoops_version.php 9798 2012-07-07 17:50:40Z Kraven30 $
  */
 
 /*

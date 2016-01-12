@@ -21,7 +21,6 @@ use Xoops\Core\Kernel\XoopsPersistableObjectHandler;
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: notebook.php 9676 2012-06-19 21:05:06Z Kraven30 $
  */
 
 
