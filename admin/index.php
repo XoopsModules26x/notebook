@@ -17,7 +17,6 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: index.php 8487 2011-12-14 18:13:51Z kraven30 $
  */
 include __DIR__ . '/header.php';
 // Get notebook handler

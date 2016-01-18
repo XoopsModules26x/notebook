@@ -21,7 +21,6 @@ use Xoops\Core\Request;
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: notebook.php 9443 2012-05-06 20:39:08Z kraven30 $
  */
 include __DIR__ . '/header.php';
 // Get main instance

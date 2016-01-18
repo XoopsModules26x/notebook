@@ -17,11 +17,8 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: about.php 8470 2011-12-12 21:50:07Z kraven30 $
  */
-include __DIR__ . '/header.php';
-$xoops->header();
-$aboutAdmin = new \Xoops\Module\Admin();
-$aboutAdmin->displayNavigation('about.php');
-$aboutAdmin->displayAbout(true);
-$xoops->footer();
+require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+
+$xoops = Xoops::getInstance();
+XoopsLoad::load('system', 'system');

@@ -17,18 +17,13 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: menu.php 9443 2012-05-06 20:39:08Z kraven30 $
  */
-$adminmenu              = array();
-$i                      = 1;
-$adminmenu[$i]['title'] = _MI_NOTEBOOK_INDEX;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = 'home.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_NOTEBOOK_NOTEBOOK;
-$adminmenu[$i]['link']  = 'admin/notebook.php';
-$adminmenu[$i]['icon']  = 'index.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_NOTEBOOK_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = 'about.png';
+// Info module
+define('_MI_NOTEBOOK_NAME', 'To-Do List');
+define('_MI_NOTEBOOK_DESC', 'Module for managing To-Do List');
+// Menu
+define('_MI_NOTEBOOK_INDEX', 'Home');
+define('_MI_NOTEBOOK_NOTEBOOK', 'To-Do manager');
+define('_MI_NOTEBOOK_ABOUT', 'About');
+// Preferences
+define('_MI_NOTEBOOK_PREFERENCE_PAGER', 'Number of To-Do items to display on page');

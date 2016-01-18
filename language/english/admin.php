@@ -17,7 +17,6 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: admin.php 9443 2012-05-06 20:39:08Z kraven30 $
  */
 define('_AM_NOTEBOOK_ACTION', 'Action');
 define('_AM_NOTEBOOK_ADD', 'Add a new Item');

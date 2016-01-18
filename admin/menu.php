@@ -17,9 +17,17 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: header.php 8460 2011-12-11 20:08:06Z kraven30 $
  */
-require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
-
-$xoops = Xoops::getInstance();
-XoopsLoad::load('system', 'system');
+$adminmenu              = array();
+$i                      = 1;
+$adminmenu[$i]['title'] = _MI_NOTEBOOK_INDEX;
+$adminmenu[$i]['link']  = 'admin/index.php';
+$adminmenu[$i]['icon']  = 'home.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_NOTEBOOK_NOTEBOOK;
+$adminmenu[$i]['link']  = 'admin/notebook.php';
+$adminmenu[$i]['icon']  = 'index.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_NOTEBOOK_ABOUT;
+$adminmenu[$i]['link']  = 'admin/about.php';
+$adminmenu[$i]['icon']  = 'about.png';

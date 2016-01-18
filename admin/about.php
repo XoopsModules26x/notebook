@@ -17,14 +17,10 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id: admin.php 9443 2012-05-06 20:39:08Z kraven30 $
  */
-// Info module
-define('_MI_NOTEBOOK_NAME', 'To-Do List');
-define('_MI_NOTEBOOK_DESC', 'Module for managing To-Do List');
-// Menu
-define('_MI_NOTEBOOK_INDEX', 'Home');
-define('_MI_NOTEBOOK_NOTEBOOK', 'To-Do manager');
-define('_MI_NOTEBOOK_ABOUT', 'About');
-// Preferences
-define('_MI_NOTEBOOK_PREFERENCE_PAGER', 'Number of To-Do items to display on page');
+include __DIR__ . '/header.php';
+$xoops->header();
+$aboutAdmin = new \Xoops\Module\Admin();
+$aboutAdmin->displayNavigation('about.php');
+$aboutAdmin->displayAbout(true);
+$xoops->footer();

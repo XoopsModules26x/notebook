@@ -17,7 +17,6 @@
  * @package         notebook
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
- * @version         $Id$
  */
 
 /**
